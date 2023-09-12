@@ -15,4 +15,5 @@ console.log(typeof money, typeof profit);
 console.log("Длина строки: " + expenses.length);
 
 console.log("Период равен " + (period) + " месяцев");
+console.log("Цель заработать " + (purpose) + " рублей");
 console.log(budgetDay);
