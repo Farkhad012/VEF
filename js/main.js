@@ -63,6 +63,55 @@ if (budgetDay > 60000) {
     console.log("Введите корректное значение бюджета")
 };
 
+// lesson-04    ====================================================================================
+
+// Спросить у пользователя `Перечислите возможный доход за ваши дополнительные работы: ${profit}?` сохранить в новую переменную extraMoney
+let input = prompt("Перечислите возможный доход за ваши дополнительные работы:");
+
+// Разбиваем строку на массив чисел, используя запятую как разделитель
+let extraMoney = input.split(',').map(item => parseFloat(item.trim()));
+
+function sum(extraMoney) {
+    let sum = 0;
+    for(let i = 0; i < extraMoney.length; i++){
+        sum += extraMoney[i] 
+    }
+    return sum;
+};
+
+let totalSum = sum(extraMoney);
+
+// Объявить функцию getAccumulatedIncome, переменную budgetMonth удаляем. Функция возвращает Накопления за месяц (Доходы минус расходы) учитывайте переменную extraMoney
+function getAccumulatedIncome() {
+    let totalIncome = money + totalSum;  // рассчитываем бюджет с учетом всех расходов и доходов
+
+    return totalIncome - amount;
+};
+
+// Объявить переменную accumulatedIncome и присвоить ей результат вызова функции getAccumulatedIncome
+
+let accumulatedIncome = getAccumulatedIncome();
+
+// Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, зная результат месячного накопления (accumulatedIncome) и возвращает результат
+function getTargetMonth() {
+    return Math.ceil(purpose/accumulatedIncome);
+ };
+
+// budgetDay рассчитываем исходя из значения месячного накопления (accumulatedIncome)
+budgetDay = Math.ceil(accumulatedIncome/30);
+
+// Очистить консоль логи и должны остаться:
+console.clear();
+
+console.log('Ваш бюджет на месяц с учетом ваших расходов составляет: ' + getAccumulatedIncome());
+console.log(`Ваша цель накопить ${purpose} с учетом всех ваших расходов будет достигнута через`, getTargetMonth() + ' месяца');
+console.log('Дневной бюджет', budgetDay);
+
+// Проверяем чтобы все работало корректно и заливаем все на удаленный репозиторий после мержим все на гитлабе в develop и пулим к себе на локальный develop для дальнейшей работы
+
+
+
+
 
 
 
